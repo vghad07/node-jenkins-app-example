@@ -11,6 +11,6 @@ RUN npm install --save express
 # Bundle app source
 COPY . /home/Documents/node-app
 
-EXPOSE 8080
-#CMD ["npm", "start"]
+EXPOSE 3000
+# CMD ["npm", "start"]
 CMD ["node", "app.js"]
