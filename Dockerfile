@@ -1,9 +1,15 @@
-FROM node:latest
+FROM node:argon
 
-EXPOSE 3000
+# Create app directory
+RUN mkdir -p /home/Documents/node-app
+WORKDIR /home/Documents/node-app
 
-WORKDIR /app
+# Install app dependencies
+COPY package.json /home/Documents/node-app
+RUN npm install --save express
 
-COPY . /app
+# Bundle app source
+COPY . /home/Documents/node-app
 
-CMD ["node", "app.js"]
+EXPOSE 8080
+CMD ["npm", "start"]
