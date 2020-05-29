@@ -1,15 +1,9 @@
-FROM node:boron
+FROM node:alpine
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+EXPOSE 3000
 
-# Install app dependencies
-COPY package.json /usr/src/app/
-RUN npm install
+WORKDIR /app
 
-# Bundle app source
-COPY . /usr/src/app
+COPY . /app
 
-EXPOSE 8080
-CMD [ "npm", "start" ]
+CMD ["node", "app.js"]
